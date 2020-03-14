@@ -1,5 +1,22 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <div class="row">
+    <div class="col-sm-4">
+      写真
+    </div>
+      user_name
+  </div>  
+  <div class="row">
+    <div class="col-sm-4">
+      <button type="button" class="btn btn-primary">select</button>
+    </div>
+    <div class="offset-sm-4 col-sm-2">
+      <button type="button" class="btn btn-primary">Post Book</button>
+    </div>
+    <button type="button" class="btn btn-primary">My Booklist</button>
+  </div>
+  <div>
+    <%= render "books/books" %>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <div class="text-center">

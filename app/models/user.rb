@@ -5,4 +5,21 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
+  
+  has_many :books
+  has_many :favorites
+  has_many :fav_books, through: :favorites, source: :book
+  
+  def favorite(book)
+    self.favorites.find_or_create_by(book_id: book.id)
+  end
+  
+  def unfavorite(book)
+   favorite = self.favorites.find_by(book_id: book.id)
+   favorite.destroy if favorite
+  end
+
+  def fav_book?(book)
+    self.fav_books.include?(book)
+  end
 end
