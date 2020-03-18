@@ -1,8 +1,16 @@
 class BooksController < ApplicationController
   before_action :require_user_logged_in
   
+  def index
+    @books = Book.all
+  end  
+  
   def show
-    
+    @book = Book.find(params[:id])
+  end 
+  
+  def new
+    @book = Book.new
   end  
   
   def create
@@ -26,7 +34,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:explain)
+    params.require(:book).permit(:explain, :change, :title)
   end
   
   def correct_user

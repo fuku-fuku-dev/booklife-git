@@ -1,21 +1,21 @@
 <% if logged_in? %>
   <div class="row">
-    <div class="col-sm-4">
-      写真
+    <div class="col-sm-6">
+      <div>
+        <img src="/assets/icon.png" class="rounded-circle" alt="icon"><%= current_user.name %>
+      </div>
+      <div class="pt-5 mt-5 ">
+        <button type="button" class="btn btn-primary">select</button>
+      </div>
     </div>
-      user_name
+    <div class="offset-sm-2 col-sm-4">
+      <div class="pt-5 pl-5 mt-5 ml-5">
+        <%= link_to "Post Book", new_book_path, class: 'btn btn-primary' %>
+        <%= link_to "My Booklist", books_path, class: 'btn btn-primary' %>
+      </div>
+    </div>
   </div>  
-  <div class="row">
-    <div class="col-sm-4">
-      <button type="button" class="btn btn-primary">select</button>
-    </div>
-    <div class="offset-sm-4 col-sm-2">
-      <button type="button" class="btn btn-primary">Post Book</button>
-    </div>
-    <button type="button" class="btn btn-primary">My Booklist</button>
-  </div>
-  <div>
-    <%= render "books/books" %>
+  <%= render "books/books" %>
   </div>
 <% else %>
   <div class="center jumbotron">
