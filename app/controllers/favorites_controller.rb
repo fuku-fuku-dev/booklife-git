@@ -8,7 +8,7 @@ class FavoritesController < ApplicationController
   end
 
   def destroy
-    book = Book.find(params[:book_id])
+    book = Book.find(params[:id])
     current_user.unfavorite(book)
     flash[:success] = 'お気に入りを外しました。'
     redirect_to root_path

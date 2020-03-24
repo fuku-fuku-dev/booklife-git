@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   root to: 'toppages#index'
+  get 'toppages/iine', to: 'toppages#iine'
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
@@ -12,6 +13,11 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :books, only: [:index, :show, :new, :create, :destroy]
+  resources :books, only: [:index, :show, :new, :create, :destroy] do
+    member do
+      get :iines
+    end
+  end
+  
   resources :favorites, only: [:create, :destroy]
 end

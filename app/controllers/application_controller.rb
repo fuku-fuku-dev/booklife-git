@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def counts(user)
-    @count_fav_books = user.fav_books.count
+  def counts(book)
+    @count_users = book.users.count
   end
+  
 end

@@ -6,7 +6,8 @@ class UsersController < ApplicationController
   end
 
   def show
-     @user = User.find(params[:id])
+    @user = User.find(params[:id])
+    @books = @user.books.order(id: :desc).page(params[:page]).per(25)
   end
 
   def new
@@ -29,7 +30,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @fav_books = current_user.fav_books.page(params[:page])
     counts(@user)
-  end  
+  end
+  
   
   private
 

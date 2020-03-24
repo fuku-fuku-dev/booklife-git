@@ -1,16 +1,16 @@
 <div class="row">
-  <div class="col-sm-4">
-    <img src="/assets/icon.png" class="img-fluid" alt="icon">user_name
+  <div class="col-sm-3">
+    <img src="/assets/icon.png" class="img-fluid" alt="icon"><%= @book.user.name %>
     <img src="/assets/book.png" class="img-fluid" alt="book">
     <div>
-      タイトル
+      <%= @book.title %>
     </div>
   </div> 
-  <div class="col-sm-8">
-    本の説明
-    内容
-    読んで変わったこと
-    内容
+  <div class="offset-sm-1 col-sm-6">
+    本の説明<br>
+    内容<%= @book.explain %><br>
+    読んで変わったこと<br>
+    内容<%= @book.change %><br>
   </div>
   <div class="col-sm-2">
     <%= render 'favorites/favorite_button', book: @book %>
