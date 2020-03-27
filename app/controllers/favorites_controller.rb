@@ -1,8 +1,8 @@
 class FavoritesController < ApplicationController
   
   def create
-    book = Book.find(params[:book_id])
-    current_user.favorite(book)
+    @book = Book.find(params[:book_id])
+    current_user.favorite(@book)
     flash[:success] = 'お気に入りに追加しました。'
     redirect_to root_path
   end

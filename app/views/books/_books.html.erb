@@ -1,18 +1,10 @@
 <div class="row">
-  <ul class="nav nav-pills nav-justified">
-    <li class="nav-item nav-link">
-      <div class="col-sm-4"><a class="nav-link active" href="#">ManyFavorite</a></div>
-    </li>
-    <li class="nav-item nav-link">
-      <div class="col-sm-2"><a class="nav-link" href="#">New</a></div>
-    </li>
-    <li class="nav-item nav-link">
-      <div class="col-sm-2"><a class="nav-link" href="#">Old</a></div>
-    </li>
-    <li class="nav-item nav-link">
-      <div class="col-sm-4"><a class="nav-link" href="#">Favorite</a></div>
-    </li>
-  </ul>
+  <nav class="nav nav-pills flex-column flex-sm-row col-sm-12">
+    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= many_favorites_book_path(@books) %>">Many Favorite</a></div>
+    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= new_books_book_path(@books) %>">New</a></div>
+    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= old_books_book_path(@books) %>">Old</a></div>
+    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= my_favorites_book_path(@books) %>">My Favorite</a></div>
+  </nav>
 </div>
 <div class="row">
   <% @books.each do |book| %>
@@ -23,7 +15,7 @@
   <div class="col-sm-7">
     <img src="/assets/book.png" class="img-fluid" alt="本の写真">
     <%= book.title %>
-    ⭐️お気に入り数 <%= @count_user %>
+    ⭐️<%= book.users.count %>
     <%= link_to "詳細", book_path(book), class: 'btn btn-primary' %>
   </div>
   <% end %>

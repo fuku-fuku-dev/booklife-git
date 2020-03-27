@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   
   resources :books, only: [:index, :show, :new, :create, :destroy] do
     member do
-      get :iines
+      get :new_books
+      get :old_books
+      get :many_favorites
+      get :my_favorites
     end
   end
   

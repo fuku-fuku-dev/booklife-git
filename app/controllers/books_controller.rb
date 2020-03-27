@@ -31,6 +31,21 @@ class BooksController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def new_books
+    @books = Book.all.order(id: :desc).page(params[:page]).per(25)
+  end
+  
+  def old_books
+    @books = Book.all.order(id: :asc).page(params[:page]).per(25)
+  end
+  
+  def many_favorites
+  end
+  
+  def my_favorites
+    @books = Book.where(id: current_user.fav_books).order(id: :asc).page(params[:page]).per(25)
+  end  
+  
   private
 
   def book_params
