@@ -36,10 +36,11 @@ class BooksController < ApplicationController
   end
   
   def old_books
-    @books = Book.all.order(id: :asc).page(params[:page]).per(25)
+    @books = Book.all.order(id: :desc).page(params[:page]).per(25)
   end
   
   def many_favorites
+    @books = Book.find(Favorite.group(:book_id).order('count(book_id) desc').limit(25).pluck(:book_id))
   end
   
   def my_favorites
