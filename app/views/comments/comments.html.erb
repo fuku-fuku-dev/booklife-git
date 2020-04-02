@@ -1,0 +1,6 @@
+<% @comment.each do |comment| %>
+  <div class="col-sm-5">
+    投稿時間<%= comment.created_at %>
+    <img src="/assets/icon.png" class="img-fluid" alt="icon"><%= comment.user.name %>
+  </div>
+<% end %>

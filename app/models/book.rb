@@ -7,4 +7,6 @@ class Book < ApplicationRecord
   
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites, source: :user
+  has_many :comments
+  has_many :user_comments, through: :comments, source: :user
 end

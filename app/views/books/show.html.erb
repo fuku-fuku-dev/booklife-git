@@ -15,4 +15,21 @@
   <div class="col-sm-2">
     <%= render 'favorites/favorite_button', book: @book %>
   </div>
+</div>  
+<div class="row">  
+  <%= form_with(model: [@book, @comment], local: true) do |f| %>
+    <%= f.text_area :content, class: "form-control", rows: 5 %>
+    <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+      <i class="far fa-comments"></i> コメントする
+    <% end %>
+  <% end %>
+  <% @comments.each do |comment| %>
+    <div class="col-sm-4">
+      投稿時間<%= comment.created_at %>
+      <img src="/assets/icon.png" class="img-fluid" alt="icon"><%= comment.user.name %>
+    </div>
+    <div class="col-sm-8">
+      <%= comment.content %>
+    </div>
+  <% end %>
 </div>

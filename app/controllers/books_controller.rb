@@ -7,6 +7,8 @@ class BooksController < ApplicationController
   
   def show
     @book = Book.find(params[:id])
+    @comments = @book.comments
+    @comment = Comment.new
   end 
   
   def new
@@ -36,7 +38,7 @@ class BooksController < ApplicationController
   end
   
   def old_books
-    @books = Book.all.order(id: :desc).page(params[:page]).per(25)
+    @books = Book.all.order(id: :asc).page(params[:page]).per(25)
   end
   
   def many_favorites

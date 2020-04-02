@@ -16,7 +16,9 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
+    if image = params[:user][:image]
+      @user.image.attach(image)
+    end
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
       redirect_to root_path
@@ -26,16 +28,22 @@ class UsersController < ApplicationController
     end  
   end
   
-  def likes
-    @user = User.find(params[:id])
-    @fav_books = current_user.fav_books.page(params[:page])
-    counts(@user)
+  def update
+    current_user.update params.require(:user).permit(:image)
+    redirect_to root_path
   end
   
+  def likes
+    @user = User.find(params[:id])
+    @books = Book.where(id: @user.fav_books).order(id: :desc).page(params[:page]).per(25)
+  end
+  
+  def image
+  end  
   
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :image)
   end
 end
