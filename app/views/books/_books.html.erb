@@ -10,7 +10,10 @@
   <% @books.each do |book| %>
   <div class="col-sm-5">
     投稿時間<%= book.created_at %>
-    <img src="/assets/icon.png" class="img-fluid" alt="icon"><%= link_to user_path(book.user) do %><%= book.user.name %><% end %>
+    <% if book.user.image.attached? %>
+      <%= image_tag book.user.image %>
+    <% end %>
+    <%= link_to user_path(book.user) do %><%= book.user.name %><% end %>
   </div>
   <div class="col-sm-7">
     <img src="/assets/book.png" class="img-fluid" alt="本の写真">

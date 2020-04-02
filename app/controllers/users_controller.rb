@@ -38,9 +38,6 @@ class UsersController < ApplicationController
     @books = Book.where(id: @user.fav_books).order(id: :desc).page(params[:page]).per(25)
   end
   
-  def image
-  end  
-  
   private
 
   def user_params
