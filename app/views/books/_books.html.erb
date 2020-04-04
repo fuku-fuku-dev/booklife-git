@@ -8,18 +8,22 @@
 </div>
 <div class="row">
   <% @books.each do |book| %>
-  <div class="col-sm-5">
-    投稿時間<%= book.created_at %>
-    <% if book.user.image.attached? %>
-      <%= image_tag book.user.image %>
-    <% end %>
-    <%= link_to user_path(book.user) do %><%= book.user.name %><% end %>
+  <div class="col-sm-2 pt-4 mt-4">
+    <% if book.user.image? %>
+      <%= image_tag book.user.image.url %>
+　　<% end %>
+　</div>
+　<div class = "col-sm-4">
+　　<div class = "pt-3 mt-3">投稿時間<%= book.created_at %></div><br>
+    <div class = "pl-5 ml-5"><%= link_to user_path(book.user) do %><%= book.user.name %><% end %></div>
   </div>
-  <div class="col-sm-7">
-    <img src="/assets/book.png" class="img-fluid" alt="本の写真">
-    <%= book.title %>
-    ⭐️<%= book.users.count %>
-    <%= link_to "詳細", book_path(book), class: 'btn btn-primary' %>
+  <div class="col-sm-2 pt-3 mt-3">
+    <% if book.image? %>
+      <%= image_tag book.image.url %>
+　　<% end %>
+    <div class = "text-center"><%= book.title %></div>
   </div>
+  <div class = "col-sm-2 pt-5 mt-5">⭐️<%= book.users.count %></div>
+  <div class = "col-sm-1 pt-5 mt-5"><%= link_to "詳細", book_path(book), class: 'btn btn-primary' %></div>   
   <% end %>
 </div>

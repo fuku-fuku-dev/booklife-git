@@ -1,17 +1,17 @@
 <% if logged_in? %>
   <div class="row">
-    <div class="col-sm-6">
+    <div class = "col-sm-6">
       <div>
-        <% if current_user.image.attached? %>
-          <%= image_tag current_user.image %>
-        <% end %>
+        <% if current_user.image? %>
+          <%= image_tag current_user.image.url %>
+　　　　<% end %>
         <%= current_user.name %>
       </div>
-      <div class="pt-5 mt-5 ">
+      <div class="pt-3 mt-4 pl-4 ml-4 mt-3 pb-3 mb-3">
         <%= link_to "select", image_user_path(current_user.id), method: :post, class: 'btn btn-primary' %>
       </div>
     </div>
-    <div class="offset-sm-2 col-sm-4">
+    <div class = "offset-sm-1 col-sm-5">
       <div class="pt-5 pl-5 mt-5 ml-5">
         <%= link_to "Post Book", new_book_path, class: 'btn btn-primary' %>
         <%= link_to "My Booklist", books_path, class: 'btn btn-primary' %>

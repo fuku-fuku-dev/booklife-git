@@ -33,6 +33,9 @@ class BooksController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def update
+  end
+  
   def new_books
     @books = Book.all.order(id: :desc).page(params[:page]).per(25)
   end
@@ -52,7 +55,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:explain, :change, :title)
+    params.require(:book).permit(:explain, :change, :title, :image)
   end
   
   def correct_user

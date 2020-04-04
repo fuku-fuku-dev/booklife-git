@@ -1,40 +1,47 @@
 <div class="row">
   <div class="col-sm-3">
-    <% if @book.user.image.attached? %>
-      <%= image_tag @book.user.image %>
-    <% end %>
+    <% if @book.user.image? %>
+      <%= image_tag @book.user.image.url %>
+　　<% end %>
     <%= @book.user.name %>
-    <img src="/assets/book.png" class="img-fluid" alt="book">
-    <div>
+    <% if @book.image? %>
+      <div class = "pt-3 mt-3"><%= image_tag @book.image.url %></div>
+　　<% end %>
+    <div class = "pl-3 ml-3">
       <%= @book.title %>
     </div>
   </div> 
   <div class="offset-sm-1 col-sm-6">
-    本の説明<br>
-    内容<%= @book.explain %><br>
-    読んで変わったこと<br>
-    内容<%= @book.change %><br>
+    <div class = "pb-2 mb-2">本の説明</div>
+    <div><%= @book.explain %></div><br>
+    <div class = "pt-5 mt-5 pb-2 mb-2">読んで変わったこと</div>
+    <%= @book.change %><br>
   </div>
-  <div class="col-sm-2">
+  <div class="col-sm-2 mt-5 pt-5">
     <%= render 'favorites/favorite_button', book: @book %>
   </div>
 </div>  
-<div class="row">  
-  <%= form_with(model: [@book, @comment], local: true) do |f| %>
-    <%= f.text_area :content, class: "form-control", rows: 5 %>
-    <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-      <i class="far fa-comments"></i> コメントする
+<div class = "row">
+  <div class = "col-sm-12">
+    <%= form_with(model: [@book, @comment], local: true) do |f| %>
+      <div class = "form-group row pt-3 mt-3">
+        <div class = "col-sm-2"><%= f.label :content, 'コメントをする' %></div>
+        <div class = "col-sm-8"><%= f.text_field :content, class: 'form-control' %></div>
+        <div class = "col-sm-2"><%= f.submit '送信', class: 'btn btn-primary' %></div>
+      </div>
     <% end %>
-  <% end %>
+  </div>
   <% @comments.each do |comment| %>
-    <div class="col-sm-4">
-      投稿時間<%= comment.created_at %>
-      <% if comment.user.image.attached? %>
-        <%= image_tag comment.user.image %>
-      <% end %>
-      <%= comment.user.name %>
+    <div class="col-sm-2">
+      <% if comment.user.image? %>
+        <%= image_tag comment.user.image.url %>
+　　  <% end %>
+　　</div>
+　　<div class = "col-sm-4">
+　　  投稿時間<%= comment.created_at %><br>
+      <div class = "pl-5 ml-5 mt-5 pt-4"><%= comment.user.name %></div>
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-5">
       <%= comment.content %>
     </div>
   <% end %>

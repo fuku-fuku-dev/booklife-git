@@ -15,13 +15,14 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :books, only: [:index, :show, :new, :create, :destroy] do
+  resources :books, only: [:index, :show, :new, :create, :destroy, :update] do
     resources :comments, only: [:create, :destroy]
     member do
       get :new_books
       get :old_books
       get :many_favorites
       get :my_favorites
+      post :image
     end
   end
   

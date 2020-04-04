@@ -5,7 +5,8 @@ class User < ApplicationRecord
                     format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  has_one_attached :image
+  #has_one_attached :image
+  mount_uploader :image, ImageUploader
   
   has_many :books
   has_many :favorites
@@ -29,5 +30,4 @@ class User < ApplicationRecord
   def comment(book)
     self.comments.find_or_create_by(book_id: book.id)
   end  
-  
 end
