@@ -1,14 +1,14 @@
-<div class="row">
-  <nav class="nav nav-pills flex-column flex-sm-row col-sm-12">
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= many_favorites_book_path(@books) %>">Many Favorite</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= new_books_book_path(@books) %>">New</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= old_books_book_path(@books) %>">Old</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= my_favorites_book_path(@books) %>">My Favorite</a></div>
+<div class = "row">
+  <nav class = "nav nav-pills flex-column flex-sm-row col-sm-12">
+    <div class = "col-sm-3"><a class = "flex-sm-fill text-sm-center nav-link" href = "<%= many_favorites_book_path(@books) %>">Many Favorite</a></div>
+    <div class = "col-sm-3"><a class = "flex-sm-fill text-sm-center nav-link" href = "<%= new_books_book_path(@books) %>">New</a></div>
+    <div class = "col-sm-3"><a class = "flex-sm-fill text-sm-center nav-link" href = "<%= old_books_book_path(@books) %>">Old</a></div>
+    <div class = "col-sm-3"><a class = "flex-sm-fill text-sm-center nav-link" href = "<%= my_favorites_book_path(@books) %>">My Favorite</a></div>
   </nav>
 </div>
-<div class="row">
+<div class = "row">
   <% @books.each do |book| %>
-  <div class="col-sm-2 pt-4 mt-4">
+  <div class = "col-sm-2 pt-4 mt-4">
     <% if book.user.image? %>
       <%= image_tag book.user.image.url %>
 　　<% end %>
@@ -17,7 +17,7 @@
 　　<div class = "pt-3 mt-3">投稿時間<%= book.created_at %></div><br>
     <div class = "pl-5 ml-5"><%= link_to user_path(book.user) do %><%= book.user.name %><% end %></div>
   </div>
-  <div class="col-sm-2 pt-3 mt-3">
+  <div class = "col-sm-2 pt-3 mt-3">
     <% if book.image? %>
       <%= image_tag book.image.url %>
 　　<% end %>

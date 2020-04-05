@@ -1,9 +1,12 @@
 <div class="row">
     <div class="col-sm-6">
-      <div>
-        <img src="/assets/icon.png" class="rounded-circle" alt="icon"><%= @user.name %>
+      <div class = "pr-5 mr-5">
+        <% if @user.image? %>
+          <%= image_tag @user.image.url %>
+　　　　<% end %>
+　　　　<%= @user.name %>
       </div>
-      <div class="pt-5 mt-5 ">
+      <div class="pt-5 mt-5">
         <button type="button" class="btn btn-primary">select</button>
       </div>
     </div>

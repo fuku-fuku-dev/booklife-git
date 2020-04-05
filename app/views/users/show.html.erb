@@ -1,33 +1,27 @@
 <div>
-  <% if @user.image.attached? %>
-    <%= image_tag @user.image %>
-  <% end %>
+  <% if @user.image? %>
+    <%= image_tag @user.image.url %>
+　<% end %>
   <%= @user.name %>
 </div>
-<div class="row">
-  <nav class="nav nav-pills flex-column flex-sm-row col-sm-12">
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= many_favorites_book_path(@user) %>">Many Favorite</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= new_books_book_path(@user) %>">New</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= old_books_book_path(@user) %>">Old</a></div>
-    <div class="col-sm-3"><a class="flex-sm-fill text-sm-center nav-link" href="<%= likes_user_path(@user) %>">My Favorite</a></div>
-  </nav>
-</div>
-<div class="row">
+<div class="row pt-3 mt-3">
   <% @books.each do |book| %>
-  <div class="col-sm-5">
-    投稿時間<%= book.created_at %>
-    <% if book.user.image.attached? %>
-      <%= image_tag book.user.image %>
-    <% end %>
-    <%= link_to user_path(book.user) do %><%= book.user.name %><% end %>
+  <div class = "col-sm-2 pt-4 mt-4">
+    <% if book.user.image? %>
+      <%= image_tag book.user.image.url %>
+　　<% end %>
+　</div>
+　<div class = "col-sm-4">
+　　<div class = "pt-3 mt-3">投稿時間<%= book.created_at %></div><br>
+    <div class = "pl-5 ml-5"><%= link_to user_path(book.user) do %><%= book.user.name %><% end %></div>
   </div>
-  <div class="col-sm-7">
-    <% if book.image.attached? %>
-      <%= image_tag book.image %>
-    <% end %>
-    <%= book.title %>
-    ⭐️<%= book.users.count %>
-    <%= link_to "詳細", book_path(book), class: 'btn btn-primary' %>
-  </div>
+  <div class="col-sm-2 pt-3 mt-3">
+    <% if book.image? %>
+      <%= image_tag book.image.url %>
+　　<% end %>
+    <div class = "text-center"><%= book.title %></div>
+  </div>  
+  <div class = "col-sm-2 pt-5 mt-5">⭐️<%= book.users.count %></div>
+  <div class = "col-sm-1 pt-5 mt-5">  <%= link_to "詳細", book_path(book), class: 'btn btn-primary' %></div>
   <% end %>
 </div>
