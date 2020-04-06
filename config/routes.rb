@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :new, :create, :update] do
     member do
       get :likes
-      post :image
+      put :image
     end
   end
   

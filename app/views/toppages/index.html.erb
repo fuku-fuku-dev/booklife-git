@@ -8,7 +8,7 @@
         <%= current_user.name %>
       </div>
       <div class = "pt-3 mt-4 pl-4 ml-4 mt-3 pb-3 mb-3">
-        <%= link_to "select", image_user_path(current_user.id), method: :post, class: 'btn btn-primary' %>
+        <%= link_to "select", image_user_path(current_user.id), method: :put, class: 'btn btn-primary' %>
       </div>
     </div>
     <div class = "offset-sm-2 col-sm-4">
