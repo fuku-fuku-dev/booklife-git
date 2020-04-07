@@ -4,11 +4,24 @@ class ImageUploader < CarrierWave::Uploader::Base
   include CarrierWave::MiniMagick
   
   process resize_to_fill: [150, 150, "Center"]
+  process :convert => 'png'
+  
+  version :standard do
+    process :resize_to_fill => [100, 150, :north]
+  end
+
+  version :thumbnail do
+    resize_to_fit(50, 50)
+  end
   
   if Rails.env.production?
     include Cloudinary::CarrierWave
   else
     storage :file
+  end
+  
+  def public_id
+    return "local_test_cloudinary/" + Cloudinary::Utils.random_public_id;
   end
 
   # Choose what kind of storage to use for this uploader:
