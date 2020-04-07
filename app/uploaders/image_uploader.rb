@@ -3,7 +3,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
   
-  
   process resize_to_fill: [150, 150, "Center"]
   
   if Rails.env.production?

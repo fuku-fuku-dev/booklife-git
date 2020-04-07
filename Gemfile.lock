@@ -59,7 +59,7 @@ GEM
       image_processing (~> 1.1)
       mimemagic (>= 0.3.0)
       mini_mime (>= 0.1.3)
-    cloudinary (1.13.2)
+    cloudinary (1.11.1)
       aws_cf_signer
       rest-client
     coffee-rails (4.2.2)
@@ -127,7 +127,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     pg (1.2.3)
-    public_suffix (4.0.3)
+    public_suffix (4.0.4)
     puma (3.12.4)
     rack (2.2.2)
     rack-test (1.1.0)
@@ -221,7 +221,7 @@ DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
   carrierwave (~> 2.0)
-  cloudinary
+  cloudinary (= 1.11.1)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   kaminari
