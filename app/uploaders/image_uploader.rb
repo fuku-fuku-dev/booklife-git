@@ -1,6 +1,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     include Cloudinary::CarrierWave
+    
+    process :resize_to_fill => [150, 150, "Center"]
     process :convert => 'png'
     process :tags => ['image']
 
