@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
   
   def update
-    current_user.update params.require(:user).permit(:image)
+    current_user.update_attributes params.require(:user).permit(:image)
     redirect_to root_path
   end
   
