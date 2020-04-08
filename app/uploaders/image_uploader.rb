@@ -1,7 +1,8 @@
 class ImageUploader < CarrierWave::Uploader::Base
   include Cloudinary::CarrierWave if Rails.env.production?
   include CarrierWave::RMagick
-  process resize_to_fill: [128,128]
+  process resize_to_fill: [150, 150, "Center"]
+  
   storage :file
     # アップロードファイルの保存先ディレクトリは上書き可能
     # 下記はデフォルトの保存先
