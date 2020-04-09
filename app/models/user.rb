@@ -29,5 +29,10 @@ class User < ApplicationRecord
   
   def comment(book)
     self.comments.find_or_create_by(book_id: book.id)
-  end  
+  end 
+  
+  def comment_out(book)
+   comment = self.comments.find_by(book)
+   comment.destroy if comment
+  end
 end
