@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :require_user_logged_in
+  before_action :correct_user, only: [:destroy]
   
   def index
     @books = current_user.books.order(id: :desc).page(params[:page]).per(25)

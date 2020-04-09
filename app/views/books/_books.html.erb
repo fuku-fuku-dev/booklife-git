@@ -23,7 +23,12 @@
 　　<% end %>
     <div class = "text-center"><%= book.title %></div>
   </div>
-  <div class = "col-sm-2 pt-5 mt-5">⭐️<%= book.users.count %></div>
-  <div class = "col-sm-1 pt-5 mt-5"><%= link_to "詳細", book_path(book), class: 'btn btn-primary' %></div>   
+  <div class = "col-sm-1 pt-5 mt-5">⭐️<%= book.users.count %></div>
+  <div class = "col-sm-1 pt-5 mt-5">
+    <% if current_user == book.user %>
+      <%= link_to "Delete", book, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger' %>
+    <% end %>
+  </div>   
+    <div class = "col-sm-1 pt-5 mt-5"><%= link_to "詳細", book_path(book), class: 'btn btn-primary' %></div>  
   <% end %>
 </div>
